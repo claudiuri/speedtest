@@ -38,7 +38,7 @@ const job = new CronJob('0 */5 * * * *', async () => {
       upload,
       url: result.url,
       server: server.name,
-      pig: ping.latency,
+      ping: ping.latency,
     });
 
     

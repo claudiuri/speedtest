@@ -6,7 +6,7 @@ exports.up = function(knex) {
     table.text("server").notNullable();
     table.decimal("download").notNullable();
     table.decimal("upload").notNullable();
-    table.decimal("pig").notNullable();
+    table.decimal("ping").notNullable();
     table.decimal("packetLoss").notNullable();
   });
 };
