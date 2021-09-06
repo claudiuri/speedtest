@@ -1,4 +1,6 @@
-require("dotenv/config");
+const path = require('path');
+
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
 const util = require('util');
 
@@ -18,11 +20,11 @@ const knex = require('knex')({
 const CronJob = require('cron').CronJob;
 
 function bytesToMb (bytes) {
-  return (bytes / (1024*1024)).toFixed(2)
+  return (bytes / (1024*1024)).toFixed(2);
 }
 
 const job = new CronJob('0 */5 * * * *', async () => {
-  console.info(`--- Date: ${new Date().toISOString()}`)
+  console.info(`--- Date: ${new Date().toISOString()}`);
 
   try {
     const { stdout } = await exec("speedtest -f json-pretty")
@@ -44,7 +46,7 @@ const job = new CronJob('0 */5 * * * *', async () => {
     
     console.info(` ✔ PING: ${ping.latency} - DOWNLOAD: ${download} - UPLOAD: ${upload}`);
   } catch (error) {
-    console.error(" ✖ Test fail", error)
+    console.error(" ✖ Test fail", error);
   }
 
 }, null, true, 'America/Sao_Paulo');
